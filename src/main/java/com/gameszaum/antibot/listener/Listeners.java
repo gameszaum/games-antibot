@@ -11,6 +11,8 @@ import net.md_5.bungee.api.plugin.Listener;
 import net.md_5.bungee.event.EventHandler;
 import net.md_5.bungee.event.EventPriority;
 
+import java.util.logging.Level;
+
 public class Listeners implements Listener {
 
     private AntiBot antiBot;
@@ -27,13 +29,12 @@ public class Listeners implements Listener {
 
         if (connection == null) return;
         if (connection.getVirtualHost() == null) return;
+        if (connection.isOnlineMode()) return;
 
         String ip = connection.getVirtualHost().getHostName();
 
         if (accountManager.get(ip) != null) {
-            if (accountManager.get(ip).isProxy()) {
-                event.setCancelled(true);
-            }
+            event.setCancelled(accountManager.get(ip).isProxy());
             return;
         }
         try {
@@ -42,6 +43,8 @@ public class Listeners implements Listener {
             e.printStackTrace();
             event.setCancelled(true);
             event.setCancelReason(TextComponent.fromLegacyText(antiBot.getMessageManager().getMsg("impossible-check")));
+
+            antiBot.getLogger().log(Level.INFO, antiBot.getMessageManager().getMsg("debug-connection-bot"));
             return;
         }
         if (accountManager.get(ip).isProxy()) {

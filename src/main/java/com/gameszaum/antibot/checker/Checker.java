@@ -1,5 +1,6 @@
 package com.gameszaum.antibot.checker;
 
+import com.gameszaum.antibot.checker.verifies.ProxyCheck;
 import com.gameszaum.antibot.exception.InvalidCheckException;
 import lombok.Getter;
 
@@ -12,6 +13,7 @@ public class Checker {
 
     public Checker() {
         verifies = new ArrayList<>();
+        verifies.add(new ProxyCheck());
     }
 
     public boolean check(String ip) throws InvalidCheckException {

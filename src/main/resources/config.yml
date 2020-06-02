@@ -4,6 +4,7 @@ plugin-prefix: 'Antibot'
 
 messages:
   impossible-check: 'Impossivel validar sua sessao, tente novamente.'
+  debug-connection-bot: 'O IP "<ip>" foi identificado como bot e esta permanentemente banido do servidor.'
 
 mysql:
   host: localhost
