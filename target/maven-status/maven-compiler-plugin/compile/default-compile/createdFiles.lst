@@ -1,0 +1,12 @@
+com\gameszaum\antibot\checker\Checker.class
+com\gameszaum\antibot\account\Account.class
+com\gameszaum\antibot\listener\Listeners.class
+com\gameszaum\antibot\checker\Checker$CheckAPI.class
+com\gameszaum\antibot\manager\AccountManager.class
+com\gameszaum\antibot\checker\Verify.class
+com\gameszaum\antibot\checker\verifies\ProxyCheck.class
+com\gameszaum\antibot\AntiBot.class
+com\gameszaum\antibot\message\manager\MessageManager.class
+com\gameszaum\antibot\exception\InvalidCheckException.class
+com\gameszaum\antibot\message\Message.class
+com\gameszaum\antibot\manager\impl\AccountManagerImpl.class

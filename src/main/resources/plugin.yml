@@ -1,0 +1,5 @@
+name: games-antibot
+version: ${project.version}
+main: com.gameszaum.antibot.AntiBot
+api-version: 1.8.8
+authors: [gameszaum]
