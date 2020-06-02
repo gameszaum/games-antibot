@@ -40,7 +40,7 @@
     <orderEntry type="module-library">
       <library name="Maven: com.gameszaum.core:games-core:1.0-SNAPSHOT">
         <CLASSES>
-          <root url="jar://C:/APIs/games-core-1.0-SNAPSHOT.jar!/" />
+          <root url="jar://$MODULE_DIR$/../games-core/target/games-core-1.0-SNAPSHOT.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

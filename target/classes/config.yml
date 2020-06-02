@@ -9,4 +9,5 @@ mysql:
   host: localhost
   db: redeshield
   port: 3306
+  user: root
   pass:

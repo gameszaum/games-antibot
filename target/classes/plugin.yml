@@ -3,3 +3,4 @@ version: 0.1-SNAPSHOT
 main: com.gameszaum.antibot.AntiBot
 api-version: 1.8.8
 authors: [gameszaum]
+depends: [games-core]

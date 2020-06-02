@@ -1,6 +1,7 @@
 package com.gameszaum.antibot;
 
 import com.gameszaum.antibot.checker.Checker;
+import com.gameszaum.antibot.listener.Listeners;
 import com.gameszaum.antibot.manager.AccountManager;
 import com.gameszaum.antibot.manager.impl.AccountManagerImpl;
 import com.gameszaum.antibot.message.manager.MessageManager;
@@ -41,8 +42,8 @@ public final class AntiBot extends GamesBungee {
 
         mySQLService = new MySQLServiceImpl(config.getString("plugin-prefix"));
         mySQLService.createConnection(new DatabaseCredentials(config.getString("mysql.host"), config.getString("mysql.db"),
-                config.getString("mysql.port"), config.getString("mysql.user"), config.getString("mysql.pass")));
-        mySQLService.executeQuery("CREATE TABLE IF NOT EXISTS `games_antibot` (`ip` VARCHAR(40), `proxy` BOOL(10));");
+                config.getString("mysql.user"), config.getString("mysql.pass"), config.getInt("mysql.port")));
+        mySQLService.executeQuery("CREATE TABLE IF NOT EXISTS `games_antibot` (`ip` VARCHAR(40), `proxy` BOOL);");
 
         accountManager = new AccountManagerImpl(mySQLService);
         accountManager.loadAccounts();
@@ -50,6 +51,8 @@ public final class AntiBot extends GamesBungee {
         checker = new Checker();
         messageManager = new MessageManager(getConfig());
         messageManager.load();
+
+        registerListener(new Listeners());
 
         System.out.println("[" + config.getString("plugin-prefix") + "] enabled.");
     }

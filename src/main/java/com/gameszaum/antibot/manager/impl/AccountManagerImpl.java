@@ -33,7 +33,7 @@ public class AccountManagerImpl implements AccountManager {
             ResultSet resultSet = ps.executeQuery();
 
             if (resultSet.next()) {
-                create(new Account(resultSet.getString("ip"), resultSet.getBoolean("proxy")));
+                create(new Account(resultSet.getString("ip"), (resultSet.getInt("proxy") == 0)));
             }
             resultSet.close();
             ps.close();
@@ -46,7 +46,7 @@ public class AccountManagerImpl implements AccountManager {
     public void saveAccounts() {
         accounts.forEach(account -> {
             if (!mySQLService.contains("games_antibot", "ip", account.getIp())) {
-                mySQLService.executeQuery("INSERT INTO `games_antibot` (`ip`, `proxy`) VALUES ('" + account.getIp() + "', '" + account.isProxy() + "');");
+                mySQLService.executeQuery("INSERT INTO `games_antibot` (`ip`, `proxy`) VALUES ('" + account.getIp() + "', '" + (account.isProxy() ? 1 : 0) + "');");
             }
         });
     }
